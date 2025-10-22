@@ -6,7 +6,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { cn, randomItem } from "./lib/utils";
 import {
   colorHarmonyList,
+  colorStr,
   colorStrengthList,
+  getBestColor,
   getColorPalette,
   isDark,
   toHex,
@@ -23,6 +25,7 @@ type ColorItem = {
 export type Settings = {
   harmony: ColorHarmony;
   strength: ColorStrength;
+  code: "hex" | "rgb" | "hsl";
 };
 
 const MIN_COLORS_COUNT = 2;
@@ -42,6 +45,7 @@ function App() {
   const [settings, setSettings] = useState<Settings>({
     harmony: randomItem(colorHarmonyList),
     strength: randomItem(colorStrengthList),
+    code: "hex",
   });
 
   useEffect(() => {
@@ -87,11 +91,17 @@ function App() {
   };
 
   const addItem = () => {
-    const newColors = [...colors, colorItem("#00FFFF")];
-    if (newColors.length >= MAX_COLORS_COUNT) {
+    const newLength = colors.length + 1;
+    const newColor = getBestColor(
+      settings.harmony,
+      settings.strength,
+      newLength,
+      colors.map((c) => c.hex)
+    );
+    setColors([...colors, colorItem(newColor)]);
+    if (newLength >= MAX_COLORS_COUNT) {
       toast(`Has reached the maximum of ${MAX_COLORS_COUNT} colors allowed`);
     }
-    setColors(newColors);
   };
 
   const removeItem = (index: number) => {
@@ -117,12 +127,15 @@ function App() {
   return (
     <div className="flex flex-col h-dvh w-full">
       <header className="h-16 border-b px-4 flex justify-between items-center">
-        <h1 className="font-bold text-2xl">ColGen</h1>
+        <h1 className="font-black text-2xl tracking-tighter">ColGen</h1>
         <Toolbar
           colors={colors.map((c) => c.hex)}
           settings={settings}
           onGenerate={(newSettings) =>
             generateColors({ settings: newSettings })
+          }
+          onChangeFormat={(format) =>
+            setSettings({ ...settings, code: format as any })
           }
         />
       </header>
@@ -139,8 +152,8 @@ function App() {
                   isDarkColor ? "text-white" : "text-black"
                 )}
               >
-                <h4 className="text-sm sm:text-base md:text-lg font-bold ">
-                  {hex}
+                <h4 className="text-sm sm:text-base md:text-lg font-bold uppercase">
+                  {colorStr(hex, settings.code)}
                 </h4>
                 <div className="flex gap-2 landscape:flex-col landscape:my-4">
                   <ColorAction tooltip="Input Color">

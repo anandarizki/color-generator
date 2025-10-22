@@ -2,6 +2,7 @@
 
 import chroma from "chroma-js";
 import { randomItem } from "./utils";
+import { StretchHorizontal } from "lucide-react";
 
 export type ColorHarmony =
   | "monochromatic"
@@ -62,6 +63,28 @@ export function toHex(color: string) {
     throw new Error(`Invalid color format: ${color}`);
   }
 }
+
+const rgbStr = (hex: string) => {
+  const [r, g, b] = hexToRgb(hex);
+  return `${r},${g},${b}`;
+};
+
+const hslStr = (hex: string) => {
+  const [h, s, l] = hexToHsl(hex);
+  return `${h},${s},${l}`;
+};
+
+export const colorStr = (
+  hex: string,
+  format: "hex" | "rgb" | "hsl"
+): string => {
+  const strByFormat = {
+    hex,
+    rgb: rgbStr(hex),
+    hsl: hslStr(hex),
+  };
+  return strByFormat[format];
+};
 
 function applyStrength(h: number, s: number, l: number, str: ColorStrength) {
   const hslByStrength: Record<ColorStrength, [number, number, number]> = {
@@ -142,4 +165,14 @@ export function getColorPalette(
   }
 
   return generateColors(length, base, strength, harmonyOffsets[harmony]);
+}
+
+export function getBestColor(
+  harmony: ColorHarmony,
+  strength: ColorStrength,
+  length: number,
+  base: string[]
+): string {
+  const generated = getColorPalette(harmony, strength, length, base);
+  return generated.pop() || "#CCCCCC";
 }

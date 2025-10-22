@@ -10,21 +10,39 @@ import { Palette } from "lucide-react";
 type Props = {
   settings: Settings;
   onChange: (settings: Settings) => void;
+  onChangeFormat: (format: string) => void;
 };
 
-const ThemeOptions = ({ settings, onChange }: Props) => {
+const ThemeOptions = ({ settings, onChange, onChangeFormat }: Props) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button size={"lg"} variant="secondary">
-          <Palette />{" "}
+          <Palette />
           <span className="hidden sm:inline capitalize">
             {settings.harmony.replace("-", " ")} / {settings.strength}
           </span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[330px]" align="end">
-        <h3 className="font-bold mb-2">Color Harmony</h3>
+      <PopoverContent
+        className="w-[330px] overflow-auto max-h-[calc(100dvh-70px)]"
+        align="end"
+      >
+        <h3 className="font-bold text-sm tracking-tight mb-2">CODE FORMAT</h3>
+        <div className="grid grid-cols-3 gap-2 mb-6">
+          {["hex", "rgb", "hsl"].map((code) => (
+            <Button
+              className="text-xs uppercase"
+              variant={settings.code === code ? "default" : "secondary"}
+              key={code}
+              onClick={() => onChangeFormat(code)}
+            >
+              {code}
+            </Button>
+          ))}
+        </div>
+
+        <h3 className="font-bold text-sm tracking-tight mb-2">HARMONY</h3>
         <div className="grid grid-cols-2 gap-2 mb-6">
           {colorHarmonyList.map((harmony) => (
             <Button
@@ -37,7 +55,7 @@ const ThemeOptions = ({ settings, onChange }: Props) => {
             </Button>
           ))}
         </div>
-        <h3 className="font-bold mb-2">Color Strength</h3>
+        <h3 className="font-bold text-sm tracking-tight mb-2">STRENGTH</h3>
         <div className="grid grid-cols-2 gap-2">
           {colorStrengthList.map((strength) => (
             <Button

@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# 🎨 ColGen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ColGen** is your fun and lightweight color palette generator — here to make your design life a little more colorful (and a lot easier).
 
-Currently, two official plugins are available:
+- ✨ Generate stunning color combinations in seconds.
+- 📱 Works beautifully on both mobile and desktop.
+- 🧠 Smart harmony and strength options for perfect palettes every time.
+- 🧃 **Super simple** — no clutter, just pure color fun
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 [https://color-generator-rust.vercel.app/](https://color-generator-rust.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧩 Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 📜 Download color code list as `.txt`
+- 🎨 Choose different **color harmonies**
+- 🌈 Adjust the **color strength** (pastel, vibrant, etc.)
+- 💻 Works seamlessly across **mobile and desktop**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🪄 How to Use
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🎲 Generate Palette
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Click the **“Generate”** button or press the **Spacebar** to instantly create a new palette.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### ➕ Add or Remove Colors
+
+- To **add** a new color (up to **6** max), click the **‘+’** icon on the right.
+- To **remove**, just tap the **‘x’** on any color item.
+
+### 🔒 Lock Colors
+
+Keep the colors you love!  
+Click the **lock icon** to freeze a color so it won’t change when regenerating.
+
+> 💡 You can’t generate new colors if _all_ colors are locked (makes sense, right? 😄)
+
+### 🎨 Change Colors
+
+Want to fine-tune?  
+Click the **pipette (eyedropper)** icon to open a color input and pick your perfect shade.
+
+---
+
+## 🧭 Color Harmony Options
+
+| Harmony Type            | Description                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| **Monochromatic**       | Different shades and tones of a single hue — simple, clean, and elegant.                |
+| **Analogous**           | Colors that sit next to each other on the color wheel — smooth and natural transitions. |
+| **Complementary**       | Opposite colors on the color wheel — high contrast, bold, and energetic.                |
+| **Split Complementary** | A twist on complementary — adds variety while staying balanced.                         |
+| **Triadic**             | Three colors evenly spaced on the color wheel — vibrant and playful.                    |
+| **Tetradic**            | Four colors forming a rectangle on the wheel — dynamic and rich combinations.           |
+
+---
+
+## 💪 Color Strength Options
+
+| Strength     | Description                                                      |
+| ------------ | ---------------------------------------------------------------- |
+| **Pastel**   | Soft and light tones — calm and gentle.                          |
+| **Vibrant**  | Bright and punchy colors — full of life.                         |
+| **Muted**    | Subdued tones — modern and sophisticated.                        |
+| **Dark**     | Deep and moody — strong visual impact.                           |
+| **Neutral**  | Balanced and versatile — fits any design style.                  |
+| **Contrast** | High contrast between tones — perfect for readability and drama. |
+
+---
+
+## 🧰 Built With
+
+- ⚛️ [React.js](https://reactjs.org/)
+- 💅 [TailwindCSS](https://tailwindcss.com/)
+- 🎨 [chroma.js](https://gka.github.io/chroma.js/)
+- 🧱 [shadcn/ui](https://ui.shadcn.com/)
+- 🪶 [Lucide Icons](https://lucide.dev/)
+- 🔥 [react-hot-toast](https://react-hot-toast.com/)
+
+---
+
+🧡 Made with love (and lots of colors).

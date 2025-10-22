@@ -10,9 +10,10 @@ type Props = {
   settings: Settings;
   colors: string[];
   onGenerate: (settings: Settings) => void;
+  onChangeFormat: (format: string) => void;
 };
 
-const Toolbar = ({ settings, colors, onGenerate }: Props) => {
+const Toolbar = ({ settings, colors, onGenerate, onChangeFormat }: Props) => {
   const btnRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     //Use Space keyboard as an alternative to generate colors
@@ -29,11 +30,15 @@ const Toolbar = ({ settings, colors, onGenerate }: Props) => {
   return (
     <div className="flex items-center gap-2">
       <ColorDownload colors={colors} />
-      <ThemeOptions settings={settings} onChange={onGenerate} />
+      <ThemeOptions
+        settings={settings}
+        onChange={onGenerate}
+        onChangeFormat={onChangeFormat}
+      />
 
       <Button
         size={"lg"}
-        className="w-[150px]"
+        className="w-[150px] font-bold"
         ref={btnRef}
         onClick={() => onGenerate(settings)}
       >
