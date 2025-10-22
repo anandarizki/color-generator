@@ -1,4 +1,4 @@
-import { Wand } from "lucide-react";
+import { Github, Wand } from "lucide-react";
 import { Button } from "./ui/button";
 
 import type { Settings } from "@/App";
@@ -29,6 +29,14 @@ const Toolbar = ({ settings, colors, onGenerate, onChangeFormat }: Props) => {
   }, []);
   return (
     <div className="flex items-center gap-2">
+      <Button variant="secondary" size="icon" asChild>
+        <a
+          href="https://github.com/anandarizki/color-generator"
+          target="_blank"
+        >
+          <Github />
+        </a>
+      </Button>
       <ColorDownload colors={colors} />
       <ThemeOptions
         settings={settings}
@@ -37,8 +45,7 @@ const Toolbar = ({ settings, colors, onGenerate, onChangeFormat }: Props) => {
       />
 
       <Button
-        size={"lg"}
-        className="w-[150px] font-bold"
+        className="w-[130px] font-bold"
         ref={btnRef}
         onClick={() => onGenerate(settings)}
       >

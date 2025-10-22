@@ -17,7 +17,7 @@ const ThemeOptions = ({ settings, onChange, onChangeFormat }: Props) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size={"lg"} variant="secondary">
+        <Button variant="secondary">
           <Palette />
           <span className="hidden sm:inline capitalize">
             {settings.harmony.replace("-", " ")} / {settings.strength}

@@ -49,7 +49,7 @@ const ColorDownload = ({ colors }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size={"lg"} variant="secondary">
+        <Button variant="secondary">
           <Download />
           <span className="hidden sm:inline">Download</span>
         </Button>
