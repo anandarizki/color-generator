@@ -12,7 +12,7 @@ import {
 import { colorStr, isDark } from "@/lib/colors";
 
 import { cn } from "@/lib/utils";
-import { Code, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
 type Props = {
   colors: string[];

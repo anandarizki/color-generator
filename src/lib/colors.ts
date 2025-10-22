@@ -2,7 +2,6 @@
 
 import chroma from "chroma-js";
 import { randomItem } from "./utils";
-import { StretchHorizontal } from "lucide-react";
 
 export type ColorHarmony =
   | "monochromatic"
